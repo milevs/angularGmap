@@ -1,0 +1,45 @@
+<!--The content below is only a placeholder and can be replaced.
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  </div>
+<h2>Here are some links to help you start: </h2>
+
+<app-map></app-map> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-12">
+      <form class="form-inline" #form="ngForm">
+        <div class="form-group">
+          <input type="text" class="form-control" name="latitude" [(ngModel)]="latitude" placeholder="Enter latitude" required>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="longitude" [(ngModel)]="longitude" placeholder="Enter longitude" required>
+        </div>
+        <button type="button" (click)="setCenter()" class="btn btn-primary" [disabled]="form.invalid"> Go</button>
+      </form>
+    </div>
+</div>
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+       <div class="form-group">
+        <label for="place">Type Place </label>
+        <input ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/> 
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+
+<div>
+ <agm-map [latitude]="lat" [longitude]="lng">
+   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+ </agm-map>
+</div>
+
